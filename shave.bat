@@ -35,8 +35,8 @@ echo creating readme.txt...
 (
     echo Welcome to your computer, enhanced by shave.
     echo Any file/folder placed in here will be completely unblocked meaning you can run games and more.
-    echo To open the shave panel to get games and manage downloads, open up "Run Shave".
-    echo If you lose the location of this folder, on your desktop (computer home screen) click on the folder shortcut that says shave.
+    echo To open the shave panel to get games and manage downloads, Run "ShaveInstaller.exe" once its done you can open up shave with the shortcut "Run Shave".
+    echo If you lose the location of this folder, on your desktop click on the folder shortcut that says shave.
 ) > "%install_dir%\readme.txt"
 
 echo downloading shave panel...
@@ -55,11 +55,7 @@ powershell -Command "$s=(New-Object -COM WScript.Shell).CreateShortcut('%desktop
 echo opening installation folder...
 start "" "%install_dir%"
 
-echo running shaveinstaller.exe...
-start /wait "" "%install_dir%\ShaveInstaller.exe"
-
 echo cleaning up...
-del "%install_dir%\ShaveInstaller.exe" /f /q
 del "%batch_file%" /f /q
 
 echo installation complete! 
