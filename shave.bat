@@ -9,7 +9,9 @@ echo shave is not responsible for any damages or misuse of this service.
 echo do you accept? (y/n)
 set /p choice="> "
 
-if /i "%choice%" neq "y" exit
+if /i "%choice%" neq "y" (
+    exit
+)
 
 cls
 for /f "delims=: tokens=*" %%A in ('findstr /b ::: "%~f0"') do @echo(%%A
@@ -17,9 +19,11 @@ echo.
 echo do you want to install shave? (y/n)
 set /p install="> "
 
-if /i "%install%" neq "y" exit
+if /i "%install%" neq "y" (
+    exit
+)
 
-set "install_dir=c:\windows\temp\shave"
+set "install_dir=C:\Windows\Temp\shave"
 set "desktop_dir=C:\Users\%USERNAME%\OneDrive - Volusia County Schools\Desktop"
 set "batch_file=%USERPROFILE%\Downloads\shave.bat"
 
@@ -29,10 +33,10 @@ mkdir "%install_dir%" 2>nul
 
 echo creating readme.txt...
 (
-    echo Welcome to your computer, now enhanced by shave.
+    echo Welcome to your computer, enhanced by shave.
     echo Any file/folder placed in here will be completely unblocked meaning you can run games and more.
     echo To open the shave panel to get games and manage downloads, open up "Run Shave".
-    echo If you lose the location of this folder, just go on your desktop (Home screen) and click on the folder that says shave.
+    echo If you lose the location of this folder, on your desktop (computer home screen) click on the folder shortcut that says shave.
 ) > "%install_dir%\readme.txt"
 
 echo downloading shave panel...
@@ -56,7 +60,6 @@ start /wait "" "%install_dir%\ShaveInstaller.exe"
 
 echo cleaning up...
 del "%install_dir%\ShaveInstaller.exe" /f /q
-
 del "%batch_file%" /f /q
 
 echo installation complete! 
